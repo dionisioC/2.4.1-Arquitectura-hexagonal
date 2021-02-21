@@ -1,9 +1,9 @@
 package es.dionisiocortes.arqhexagonal.domain;
 
-import es.dionisiocortes.arqhexagonal.ecommerce.domain.FullProductDto;
-import es.dionisiocortes.arqhexagonal.ecommerce.domain.ProductDto;
-import es.dionisiocortes.arqhexagonal.ecommerce.domain.ProductRepository;
-import es.dionisiocortes.arqhexagonal.ecommerce.domain.ProductUseCaseImpl;
+import es.dionisiocortes.arqhexagonal.ecommerce.domain.product.FullProductDto;
+import es.dionisiocortes.arqhexagonal.ecommerce.domain.product.ProductDto;
+import es.dionisiocortes.arqhexagonal.ecommerce.domain.product.ProductRepository;
+import es.dionisiocortes.arqhexagonal.ecommerce.domain.product.ProductUseCaseImpl;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

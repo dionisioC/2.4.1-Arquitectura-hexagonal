@@ -1,10 +1,10 @@
 package es.dionisiocortes.arqhexagonal.ecommerce.service;
 
-import es.dionisiocortes.arqhexagonal.ecommerce.controller.ProductRequestDto;
-import es.dionisiocortes.arqhexagonal.ecommerce.controller.ProductResponseDto;
-import es.dionisiocortes.arqhexagonal.ecommerce.domain.FullProductDto;
-import es.dionisiocortes.arqhexagonal.ecommerce.domain.ProductDto;
-import es.dionisiocortes.arqhexagonal.ecommerce.domain.ProductUseCase;
+import es.dionisiocortes.arqhexagonal.ecommerce.controller.product.ProductRequestDto;
+import es.dionisiocortes.arqhexagonal.ecommerce.controller.product.ProductResponseDto;
+import es.dionisiocortes.arqhexagonal.ecommerce.domain.product.FullProductDto;
+import es.dionisiocortes.arqhexagonal.ecommerce.domain.product.ProductDto;
+import es.dionisiocortes.arqhexagonal.ecommerce.domain.product.ProductUseCase;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;

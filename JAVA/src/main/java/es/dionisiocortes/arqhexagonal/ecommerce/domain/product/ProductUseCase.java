@@ -1,4 +1,4 @@
-package es.dionisiocortes.arqhexagonal.ecommerce.domain;
+package es.dionisiocortes.arqhexagonal.ecommerce.domain.product;
 
 import java.util.Collection;
 import java.util.Optional;

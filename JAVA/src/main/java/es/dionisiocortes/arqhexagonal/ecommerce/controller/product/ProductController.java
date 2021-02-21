@@ -1,8 +1,8 @@
-package es.dionisiocortes.arqhexagonal.ecommerce.controller;
+package es.dionisiocortes.arqhexagonal.ecommerce.controller.product;
 
 import static org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentRequest;
 
-import es.dionisiocortes.arqhexagonal.ecommerce.domain.FullProductDto;
+import es.dionisiocortes.arqhexagonal.ecommerce.domain.product.FullProductDto;
 import es.dionisiocortes.arqhexagonal.ecommerce.service.ProductService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

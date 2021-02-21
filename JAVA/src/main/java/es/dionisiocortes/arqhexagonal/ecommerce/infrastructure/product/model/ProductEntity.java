@@ -1,7 +1,16 @@
-package es.dionisiocortes.arqhexagonal.ecommerce.domain;
+package es.dionisiocortes.arqhexagonal.ecommerce.infrastructure.product.model;
 
-public class FullProductDto {
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+public class ProductEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String description;
@@ -9,15 +18,10 @@ public class FullProductDto {
     private String manufacturer;
     private int quantity;
 
-    public FullProductDto() {
+    public ProductEntity() {
     }
 
-    public FullProductDto(String name, String description, String category, String manufacturer, int quantity) {
-        this(null, name, description, category, manufacturer, quantity);
-    }
-
-    public FullProductDto(Long id, String name, String description, String category, String manufacturer, int quantity) {
-        this.id = id;
+    public ProductEntity(String name, String description, String category, String manufacturer, int quantity) {
         this.name = name;
         this.description = description;
         this.category = category;
@@ -25,13 +29,13 @@ public class FullProductDto {
         this.quantity = quantity;
     }
 
-    public static FullProductDto fromBookDto(ProductDto product) {
-        return new FullProductDto(
-                product.getName(),
-                product.getDescription(),
-                product.getCategory(),
-                product.getManufacturer(),
-                product.getQuantity());
+    public ProductEntity(Long id, String name, String description, String category, String manufacturer, int quantity) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.category = category;
+        this.manufacturer = manufacturer;
+        this.quantity = quantity;
     }
 
     public Long getId() {

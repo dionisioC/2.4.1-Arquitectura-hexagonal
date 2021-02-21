@@ -1,9 +1,9 @@
-package es.dionisiocortes.arqhexagonal.ecommerce.infrastructure;
+package es.dionisiocortes.arqhexagonal.ecommerce.infrastructure.product;
 
-import es.dionisiocortes.arqhexagonal.ecommerce.domain.FullProductDto;
-import es.dionisiocortes.arqhexagonal.ecommerce.domain.ProductRepository;
-import es.dionisiocortes.arqhexagonal.ecommerce.infrastructure.model.ProductEntity;
-import es.dionisiocortes.arqhexagonal.ecommerce.infrastructure.repository.ProductJpaRepository;
+import es.dionisiocortes.arqhexagonal.ecommerce.domain.product.FullProductDto;
+import es.dionisiocortes.arqhexagonal.ecommerce.domain.product.ProductRepository;
+import es.dionisiocortes.arqhexagonal.ecommerce.infrastructure.product.model.ProductEntity;
+import es.dionisiocortes.arqhexagonal.ecommerce.infrastructure.product.repository.ProductJpaRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

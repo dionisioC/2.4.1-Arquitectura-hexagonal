@@ -1,4 +1,4 @@
-package es.dionisiocortes.arqhexagonal.ecommerce.domain;
+package es.dionisiocortes.arqhexagonal.ecommerce.domain.product;
 
 public class ProductDto {
 

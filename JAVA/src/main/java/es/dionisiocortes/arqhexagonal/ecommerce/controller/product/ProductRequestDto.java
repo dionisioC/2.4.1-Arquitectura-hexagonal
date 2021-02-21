@@ -1,6 +1,6 @@
-package es.dionisiocortes.arqhexagonal.ecommerce.controller;
+package es.dionisiocortes.arqhexagonal.ecommerce.controller.product;
 
-import es.dionisiocortes.arqhexagonal.ecommerce.domain.FullProductDto;
+import es.dionisiocortes.arqhexagonal.ecommerce.domain.product.FullProductDto;
 
 public class ProductRequestDto {
 
