@@ -1,10 +1,12 @@
 package es.dionisiocortes.arqhexagonal.ecommerce.infrastructure.product.model;
 
+import es.dionisiocortes.arqhexagonal.ecommerce.domain.cartitem.CartItemDto;
+import es.dionisiocortes.arqhexagonal.ecommerce.domain.product.FullProductDto;
+import es.dionisiocortes.arqhexagonal.ecommerce.infrastructure.shoppingcart.model.CartItemEntity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Collection;
+import java.util.Collections;
 
 @Entity
 public class ProductEntity {
@@ -17,6 +19,20 @@ public class ProductEntity {
     private String category;
     private String manufacturer;
     private int quantity;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "productEntity")
+    private Collection<CartItemEntity> cartItemEntities = Collections.emptyList();
+
+
+    public static ProductEntity fromFullProductDto(FullProductDto FullProductDto) {
+        return new ProductEntity(
+                FullProductDto.getId(),
+                FullProductDto.getName(),
+                FullProductDto.getDescription(),
+                FullProductDto.getCategory(),
+                FullProductDto.getManufacturer(),
+                FullProductDto.getQuantity());
+    }
+
 
     public ProductEntity() {
     }

@@ -7,5 +7,6 @@ import java.util.List;
 public class ShoppingCart {
 
     private List<CartItem> items;
+    private boolean finished;
 
 }

@@ -1,5 +1,7 @@
 package es.dionisiocortes.arqhexagonal.ecommerce.domain.product;
 
+import es.dionisiocortes.arqhexagonal.ecommerce.infrastructure.product.model.ProductEntity;
+
 public class FullProductDto {
 
     private Long id;
@@ -32,6 +34,16 @@ public class FullProductDto {
                 product.getCategory(),
                 product.getManufacturer(),
                 product.getQuantity());
+    }
+
+    public static FullProductDto fromProductEntity(ProductEntity productEntity) {
+        return new FullProductDto(
+                productEntity.getId(),
+                productEntity.getName(),
+                productEntity.getDescription(),
+                productEntity.getCategory(),
+                productEntity.getManufacturer(),
+                productEntity.getQuantity());
     }
 
     public Long getId() {
