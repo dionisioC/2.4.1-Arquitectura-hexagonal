@@ -36,7 +36,7 @@ public class ShoppingCartUseCaseImpl implements ShoppingCartUseCase {
 
         if (isValid) {
             fullShoppingCartDto.setFinished(true);
-            shoppingCartRepository.update(fullShoppingCartDto);
+            shoppingCartRepository.finishShoppingCartById(id);
         } else {
             throw new Exception();
         }

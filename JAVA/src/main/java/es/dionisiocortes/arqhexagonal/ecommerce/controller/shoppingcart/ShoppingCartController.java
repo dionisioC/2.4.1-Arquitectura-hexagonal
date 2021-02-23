@@ -47,10 +47,9 @@ public class ShoppingCartController {
         return this.shoppingCartService.addProduct(id, prodId, prodQuantity);
     }
 
-/*
-
-            DELETE /api/shoppingcarts/:cart_id/product/:prod_id - Borra un producto
-    específico de un carrito de compra
-*/
+    @DeleteMapping("/shoppingcarts/{id}")
+    public void deleteProductFromShoppingCart(@PathVariable long id, @PathVariable long prodId) {
+        this.shoppingCartService.deleteProduct(id, prodId);
+    }
 
 }

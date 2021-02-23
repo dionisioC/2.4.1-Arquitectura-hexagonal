@@ -4,7 +4,7 @@ import java.util.Optional;
 
 public interface ShoppingCartRepository {
 
-    FullShoppingCartDto save(FullShoppingCartDto fullShoppingCartDTO);
+    FullShoppingCartDto save(FullShoppingCartDto fullShoppingCartDto);
 
     Optional<FullShoppingCartDto> findById(long id);
 
@@ -16,5 +16,4 @@ public interface ShoppingCartRepository {
 
     void finishShoppingCartById(long id);
 
-    void update(FullShoppingCartDto fullShoppingCartDto);
 }

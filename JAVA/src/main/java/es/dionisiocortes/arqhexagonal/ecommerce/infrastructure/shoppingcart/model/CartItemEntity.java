@@ -21,10 +21,36 @@ public class CartItemEntity {
 
     int productNumber;
 
-    public static CartItemDto fromCartItemDto(CartItemEntity cartItemEntity) {
+    public CartItemEntity(Long id, ShoppingCartEntity shoppingCartEntity, ProductEntity productEntity, int productNumber) {
+        this.id = id;
+        this.shoppingCartEntity = shoppingCartEntity;
+        this.productEntity = productEntity;
+        this.productNumber = productNumber;
+    }
+
+    public CartItemEntity(ShoppingCartEntity shoppingCartEntity, ProductEntity productEntity, int productNumber) {
+        this.shoppingCartEntity = shoppingCartEntity;
+        this.productEntity = productEntity;
+        this.productNumber = productNumber;
+    }
+
+    public CartItemEntity(ProductEntity productEntity, int productNumber) {
+        this.productEntity = productEntity;
+        this.productNumber = productNumber;
+    }
+
+    public CartItemEntity() {
+    }
+
+    public static CartItemDto toCartItemDto(CartItemEntity cartItemEntity) {
         return new CartItemDto(
                 FullProductDto.fromProductEntity(cartItemEntity.getProductEntity()),
                 cartItemEntity.getProductNumber());
+    }
+
+    public static CartItemEntity fromCartItemDto(CartItemDto cartItemDto) {
+        return new CartItemEntity(ProductEntity.fromFullProductDto(cartItemDto.getProduct()),
+                cartItemDto.getProductNumber());
     }
 
     public Long getId() {

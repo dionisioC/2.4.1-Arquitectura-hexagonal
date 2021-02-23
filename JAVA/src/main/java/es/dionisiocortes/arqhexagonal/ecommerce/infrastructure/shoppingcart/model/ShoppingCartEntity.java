@@ -1,8 +1,12 @@
 package es.dionisiocortes.arqhexagonal.ecommerce.infrastructure.shoppingcart.model;
 
+import es.dionisiocortes.arqhexagonal.ecommerce.domain.cartitem.CartItemDto;
+import es.dionisiocortes.arqhexagonal.ecommerce.domain.shoppingcart.FullShoppingCartDto;
+
 import javax.persistence.*;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 public class ShoppingCartEntity {
@@ -25,6 +29,26 @@ public class ShoppingCartEntity {
         this.finished = finished;
     }
 
+    public static ShoppingCartEntity fromShoppingCartDto(FullShoppingCartDto fullShoppingCartDto) {
+
+        List<CartItemEntity> items = fullShoppingCartDto.getItems().stream().map(CartItemEntity::fromCartItemDto).collect(Collectors.toList());
+
+        return new ShoppingCartEntity(
+                fullShoppingCartDto.getId(),
+                items,
+                fullShoppingCartDto.isFinished());
+    }
+
+    public static FullShoppingCartDto toFullShoppingCartDto(ShoppingCartEntity shoppingCartEntity) {
+
+        List<CartItemDto> items = shoppingCartEntity.getItems().stream().map(CartItemEntity::toCartItemDto).collect(Collectors.toList());
+
+        return new FullShoppingCartDto(
+                shoppingCartEntity.getId(),
+                items,
+                shoppingCartEntity.isFinished());
+    }
+
     public Long getId() {
         return Id;
     }
@@ -39,6 +63,10 @@ public class ShoppingCartEntity {
 
     public void setItems(List<CartItemEntity> items) {
         this.items = items;
+    }
+
+    public void addItem(CartItemEntity item) {
+        this.items.add(item);
     }
 
     public boolean isFinished() {

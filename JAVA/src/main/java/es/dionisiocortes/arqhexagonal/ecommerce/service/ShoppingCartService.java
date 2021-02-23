@@ -45,4 +45,8 @@ public class ShoppingCartService {
         }
     }
 
+    public void deleteProduct(Long id, long productId ) {
+        shoppingCartUseCase.deleteProduct(id, productId);
+    }
+
 }
