@@ -47,7 +47,7 @@ public class ShoppingCartController {
         return this.shoppingCartService.addProduct(id, prodId, prodQuantity);
     }
 
-    @DeleteMapping("/shoppingcarts/{id}")
+    @DeleteMapping("/shoppingcarts/{id}/product/{prodId}/")
     public void deleteProductFromShoppingCart(@PathVariable long id, @PathVariable long prodId) {
         this.shoppingCartService.deleteProduct(id, prodId);
     }

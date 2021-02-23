@@ -39,11 +39,8 @@ public class ShoppingCartRepositoryAdapter implements ShoppingCartRepository {
     }
 
     @Override
-    public FullShoppingCartDto save(FullShoppingCartDto fullShoppingCartDto) {
-
-        List<CartItemEntity> items = fullShoppingCartDto.getItems().stream().map(CartItemEntity::fromCartItemDto).collect(Collectors.toList());
-
-        ShoppingCartEntity shoppingCartEntity = new ShoppingCartEntity(fullShoppingCartDto.getId(), items, fullShoppingCartDto.isFinished());
+    public FullShoppingCartDto create() {
+        ShoppingCartEntity shoppingCartEntity = new ShoppingCartEntity();
         return toFullShoppingCartDto(shoppingCartJpaRepositoryRepository.save(shoppingCartEntity));
     }
 

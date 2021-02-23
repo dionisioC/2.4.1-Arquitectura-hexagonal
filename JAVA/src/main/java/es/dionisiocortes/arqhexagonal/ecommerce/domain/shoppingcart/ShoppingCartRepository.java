@@ -4,7 +4,7 @@ import java.util.Optional;
 
 public interface ShoppingCartRepository {
 
-    FullShoppingCartDto save(FullShoppingCartDto fullShoppingCartDto);
+    FullShoppingCartDto create();
 
     Optional<FullShoppingCartDto> findById(long id);
 

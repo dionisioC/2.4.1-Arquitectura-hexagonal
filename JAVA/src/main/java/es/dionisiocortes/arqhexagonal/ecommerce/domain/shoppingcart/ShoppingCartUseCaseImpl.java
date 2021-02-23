@@ -16,7 +16,7 @@ public class ShoppingCartUseCaseImpl implements ShoppingCartUseCase {
 
     @Override
     public FullShoppingCartDto createShoppingCart() {
-        return shoppingCartRepository.save(new FullShoppingCartDto());
+        return shoppingCartRepository.create();
     }
 
     @Override

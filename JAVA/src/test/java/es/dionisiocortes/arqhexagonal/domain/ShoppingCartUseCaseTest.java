@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
@@ -34,11 +33,11 @@ public class ShoppingCartUseCaseTest {
 
         FullShoppingCartDto fullShoppingCartDto = new FullShoppingCartDto();
         fullShoppingCartDto.setId(1L);
-        when(shoppingCartRepository.save(Mockito.any())).thenReturn(fullShoppingCartDto);
+        when(shoppingCartRepository.create()).thenReturn(fullShoppingCartDto);
 
         FullShoppingCartDto savedFullShoppingCartDto = shoppingCartUseCaseImpl.createShoppingCart();
 
-        verify(shoppingCartRepository, times(1)).save(Mockito.any());
+        verify(shoppingCartRepository, times(1)).create();
         assertEquals(1L, savedFullShoppingCartDto.getId());
         assertEquals(fullShoppingCartDto.getItems(), savedFullShoppingCartDto.getItems());
         assertEquals(fullShoppingCartDto.isFinished(), savedFullShoppingCartDto.isFinished());
