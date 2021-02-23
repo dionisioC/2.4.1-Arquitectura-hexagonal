@@ -43,7 +43,7 @@ public class ShoppingCartController {
     @GetMapping("/shoppingcarts/{id}")
     public ShoppingCartResponseDto getShoppingCart(@PathVariable long id) {
         Optional<ShoppingCartResponseDto> maybeACart = this.shoppingCartService.findById(id);
-        if (maybeACart.isPresent()){
+        if (maybeACart.isPresent()) {
             return maybeACart.get();
         } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Cart not found");
@@ -52,7 +52,7 @@ public class ShoppingCartController {
 
     @DeleteMapping("/shoppingcarts/{id}")
     public ResponseEntity deleteShoppingCart(@PathVariable long id) {
-        if (this.shoppingCartService.deleteById(id)){
+        if (this.shoppingCartService.deleteById(id)) {
             return new ResponseEntity(HttpStatus.OK);
         } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Cart not found");
@@ -60,7 +60,7 @@ public class ShoppingCartController {
     }
 
 
-    @PostMapping("/{id}/product/{prodId}/quantity/{prodQuantity}")
+    @PostMapping("/shoppingcarts/{id}/product/{prodId}/quantity/{prodQuantity}")
     public ShoppingCartResponseDto addProductToShoppingCart(@PathVariable long id, @PathVariable long prodId, @PathVariable int prodQuantity) {
         return this.shoppingCartService.addProduct(id, prodId, prodQuantity);
     }

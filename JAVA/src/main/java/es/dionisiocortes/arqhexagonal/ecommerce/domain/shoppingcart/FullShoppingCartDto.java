@@ -24,12 +24,6 @@ public class FullShoppingCartDto {
         this.finished = finished;
     }
 
-    public static FullShoppingCartDto fromShoppingCartDto(ShoppingCartDto shoppingCartDto) {
-        return new FullShoppingCartDto(
-                shoppingCartDto.getItems(),
-                shoppingCartDto.isFinished());
-    }
-
     public Long getId() {
         return Id;
     }

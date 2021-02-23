@@ -9,31 +9,28 @@ public class FullProductDto {
     private String description;
     private String category;
     private String manufacturer;
-    private int quantity;
 
     public FullProductDto() {
     }
 
-    public FullProductDto(String name, String description, String category, String manufacturer, int quantity) {
-        this(null, name, description, category, manufacturer, quantity);
+    public FullProductDto(String name, String description, String category, String manufacturer) {
+        this(null, name, description, category, manufacturer);
     }
 
-    public FullProductDto(Long id, String name, String description, String category, String manufacturer, int quantity) {
+    public FullProductDto(Long id, String name, String description, String category, String manufacturer) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.category = category;
         this.manufacturer = manufacturer;
-        this.quantity = quantity;
     }
 
-    public static FullProductDto fromBookDto(ProductDto product) {
+    public static FullProductDto fromProductDto(ProductDto product) {
         return new FullProductDto(
                 product.getName(),
                 product.getDescription(),
                 product.getCategory(),
-                product.getManufacturer(),
-                product.getQuantity());
+                product.getManufacturer());
     }
 
     public static FullProductDto fromProductEntity(ProductEntity productEntity) {
@@ -42,8 +39,7 @@ public class FullProductDto {
                 productEntity.getName(),
                 productEntity.getDescription(),
                 productEntity.getCategory(),
-                productEntity.getManufacturer(),
-                productEntity.getQuantity());
+                productEntity.getManufacturer());
     }
 
     public Long getId() {
@@ -66,31 +62,12 @@ public class FullProductDto {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public String getCategory() {
         return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
     }
 
     public String getManufacturer() {
         return manufacturer;
     }
 
-    public void setManufacturer(String manufacturer) {
-        this.manufacturer = manufacturer;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
 }

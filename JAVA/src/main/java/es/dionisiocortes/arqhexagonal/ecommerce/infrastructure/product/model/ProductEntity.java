@@ -1,6 +1,5 @@
 package es.dionisiocortes.arqhexagonal.ecommerce.infrastructure.product.model;
 
-import es.dionisiocortes.arqhexagonal.ecommerce.domain.cartitem.CartItemDto;
 import es.dionisiocortes.arqhexagonal.ecommerce.domain.product.FullProductDto;
 import es.dionisiocortes.arqhexagonal.ecommerce.infrastructure.shoppingcart.model.CartItemEntity;
 
@@ -18,10 +17,29 @@ public class ProductEntity {
     private String description;
     private String category;
     private String manufacturer;
-    private int quantity;
+
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "productEntity")
     private Collection<CartItemEntity> cartItemEntities = Collections.emptyList();
 
+
+    public ProductEntity() {
+    }
+
+
+    public ProductEntity(String name, String description, String category, String manufacturer) {
+        this.name = name;
+        this.description = description;
+        this.category = category;
+        this.manufacturer = manufacturer;
+    }
+
+    public ProductEntity(Long id, String name, String description, String category, String manufacturer) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.category = category;
+        this.manufacturer = manufacturer;
+    }
 
     public static ProductEntity fromFullProductDto(FullProductDto FullProductDto) {
         return new ProductEntity(
@@ -29,29 +47,7 @@ public class ProductEntity {
                 FullProductDto.getName(),
                 FullProductDto.getDescription(),
                 FullProductDto.getCategory(),
-                FullProductDto.getManufacturer(),
-                FullProductDto.getQuantity());
-    }
-
-
-    public ProductEntity() {
-    }
-
-    public ProductEntity(String name, String description, String category, String manufacturer, int quantity) {
-        this.name = name;
-        this.description = description;
-        this.category = category;
-        this.manufacturer = manufacturer;
-        this.quantity = quantity;
-    }
-
-    public ProductEntity(Long id, String name, String description, String category, String manufacturer, int quantity) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.category = category;
-        this.manufacturer = manufacturer;
-        this.quantity = quantity;
+                FullProductDto.getManufacturer());
     }
 
     public Long getId() {
@@ -92,13 +88,5 @@ public class ProductEntity {
 
     public void setManufacturer(String manufacturer) {
         this.manufacturer = manufacturer;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
     }
 }

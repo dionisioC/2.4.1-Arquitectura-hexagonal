@@ -9,17 +9,14 @@ import javax.persistence.*;
 @Entity
 public class CartItemEntity {
 
+    int productNumber;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @ManyToOne
     private ShoppingCartEntity shoppingCartEntity;
-
     @ManyToOne
     private ProductEntity productEntity;
-
-    int productNumber;
 
     public CartItemEntity(Long id, ShoppingCartEntity shoppingCartEntity, ProductEntity productEntity, int productNumber) {
         this.id = id;

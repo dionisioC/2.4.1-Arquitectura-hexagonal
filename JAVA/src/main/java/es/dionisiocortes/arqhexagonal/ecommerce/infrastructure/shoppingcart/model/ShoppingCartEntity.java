@@ -29,16 +29,6 @@ public class ShoppingCartEntity {
         this.finished = finished;
     }
 
-    public static ShoppingCartEntity fromShoppingCartDto(FullShoppingCartDto fullShoppingCartDto) {
-
-        List<CartItemEntity> items = fullShoppingCartDto.getItems().stream().map(CartItemEntity::fromCartItemDto).collect(Collectors.toList());
-
-        return new ShoppingCartEntity(
-                fullShoppingCartDto.getId(),
-                items,
-                fullShoppingCartDto.isFinished());
-    }
-
     public static FullShoppingCartDto toFullShoppingCartDto(ShoppingCartEntity shoppingCartEntity) {
 
         List<CartItemDto> items = shoppingCartEntity.getItems().stream().map(CartItemEntity::toCartItemDto).collect(Collectors.toList());

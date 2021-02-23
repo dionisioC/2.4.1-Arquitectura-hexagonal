@@ -3,7 +3,7 @@ package es.dionisiocortes.arqhexagonal.ecommerce.domain.product;
 import java.util.Collection;
 import java.util.Optional;
 
-public class ProductUseCaseImpl implements ProductUseCase{
+public class ProductUseCaseImpl implements ProductUseCase {
 
     private ProductRepository productRepository;
 
@@ -13,7 +13,7 @@ public class ProductUseCaseImpl implements ProductUseCase{
 
     @Override
     public FullProductDto createProduct(ProductDto productDto) {
-        FullProductDto product = FullProductDto.fromBookDto(productDto);
+        FullProductDto product = FullProductDto.fromProductDto(productDto);
         FullProductDto fullProductDto = productRepository.save(product);
         return fullProductDto;
     }

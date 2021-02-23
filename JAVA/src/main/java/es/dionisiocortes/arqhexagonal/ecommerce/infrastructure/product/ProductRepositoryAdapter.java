@@ -27,8 +27,7 @@ public class ProductRepositoryAdapter implements ProductRepository {
                 productEntity.getName(),
                 productEntity.getDescription(),
                 productEntity.getCategory(),
-                productEntity.getManufacturer(),
-                productEntity.getQuantity());
+                productEntity.getManufacturer());
     }
 
     @Override
@@ -38,9 +37,7 @@ public class ProductRepositoryAdapter implements ProductRepository {
                 product.getName(),
                 product.getDescription(),
                 product.getCategory(),
-                product.getManufacturer(),
-                product.getQuantity()
-        );
+                product.getManufacturer());
         ProductEntity savedProductEntity = productJpaRepository.save(productEntity);
         return toFullBookDto(savedProductEntity);
     }

@@ -63,7 +63,7 @@ public class ShoppingCartRepositoryAdapter implements ShoppingCartRepository {
         ProductEntity productEntity = productJpaRepository.findById(productId).orElseThrow();
 
         if (maybeACartItem.isPresent()) {
-            productEntity.setQuantity(prodQuantity + productEntity.getQuantity());
+            maybeACartItem.get().setProductNumber(prodQuantity + maybeACartItem.get().getProductNumber());
             productJpaRepository.save(productEntity);
         } else {
             CartItemEntity cartItemEntity = new CartItemEntity(shoppingCart, productEntity, prodQuantity);

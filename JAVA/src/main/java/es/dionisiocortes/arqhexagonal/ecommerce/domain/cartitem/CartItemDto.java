@@ -1,7 +1,6 @@
 package es.dionisiocortes.arqhexagonal.ecommerce.domain.cartitem;
 
 import es.dionisiocortes.arqhexagonal.ecommerce.domain.product.FullProductDto;
-import es.dionisiocortes.arqhexagonal.ecommerce.infrastructure.shoppingcart.model.CartItemEntity;
 
 public class CartItemDto {
 
@@ -28,13 +27,4 @@ public class CartItemDto {
         return productNumber;
     }
 
-    public void setProductNumber(int productNumber) {
-        this.productNumber = productNumber;
-    }
-
-    public static CartItemDto fromProductEntity(CartItemEntity cartItemEntity) {
-        return new CartItemDto(
-                FullProductDto.fromProductEntity(cartItemEntity.getProductEntity()),
-                cartItemEntity.getProductNumber());
-    }
 }

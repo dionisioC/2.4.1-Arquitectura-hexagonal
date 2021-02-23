@@ -10,7 +10,21 @@ public class ProductResponseDto {
     private String description;
     private String category;
     private String manufacturer;
-    private int quantity;
+
+    public ProductResponseDto() {
+    }
+
+    public ProductResponseDto(Long id, String name, String description, String category, String manufacturer) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.category = category;
+        this.manufacturer = manufacturer;
+    }
+
+    public ProductResponseDto(String name, String description, String category, String manufacturer) {
+        this(null, name, description, category, manufacturer);
+    }
 
     public static ProductResponseDto fromFullProductDto(FullProductDto fullProductDto) {
         return new ProductResponseDto(
@@ -18,17 +32,7 @@ public class ProductResponseDto {
                 fullProductDto.getName(),
                 fullProductDto.getDescription(),
                 fullProductDto.getCategory(),
-                fullProductDto.getManufacturer(),
-                fullProductDto.getQuantity());
-    }
-
-    public static ProductResponseDto fromFullProductDto(ProductRequestDto fullProductDto) {
-        return new ProductResponseDto(
-                fullProductDto.getName(),
-                fullProductDto.getDescription(),
-                fullProductDto.getCategory(),
-                fullProductDto.getManufacturer(),
-                fullProductDto.getQuantity());
+                fullProductDto.getManufacturer());
     }
 
     public static ProductDto fromFullProductRequestDto(ProductRequestDto fullProductDto) {
@@ -36,24 +40,7 @@ public class ProductResponseDto {
                 fullProductDto.getName(),
                 fullProductDto.getDescription(),
                 fullProductDto.getCategory(),
-                fullProductDto.getManufacturer(),
-                fullProductDto.getQuantity());
-    }
-
-    public ProductResponseDto() {
-    }
-
-    public ProductResponseDto(Long id, String name, String description, String category, String manufacturer, int quantity) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.category = category;
-        this.manufacturer = manufacturer;
-        this.quantity = quantity;
-    }
-
-    public ProductResponseDto(String name, String description, String category, String manufacturer, int quantity) {
-        this(null, name, description, category, manufacturer, quantity);
+                fullProductDto.getManufacturer());
     }
 
     public Long getId() {
@@ -96,11 +83,4 @@ public class ProductResponseDto {
         this.manufacturer = manufacturer;
     }
 
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
 }

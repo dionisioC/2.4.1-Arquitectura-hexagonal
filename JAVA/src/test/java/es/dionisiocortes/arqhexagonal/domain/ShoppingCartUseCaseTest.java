@@ -50,7 +50,7 @@ public class ShoppingCartUseCaseTest {
 
         FullShoppingCartDto fullShoppingCartDto = new FullShoppingCartDto();
 
-        FullProductDto fullProductDtoReturned = new FullProductDto(1L, "Product01", "Description01", "Category01", "Manufacturer01", 100);
+        FullProductDto fullProductDtoReturned = new FullProductDto(1L, "Product01", "Description01", "Category01", "Manufacturer01");
 
         fullShoppingCartDto.setItems(List.of(new CartItemDto(fullProductDtoReturned, 1)));
         fullShoppingCartDto.setId(1L);

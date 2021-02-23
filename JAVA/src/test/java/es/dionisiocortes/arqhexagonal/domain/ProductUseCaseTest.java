@@ -29,8 +29,8 @@ public class ProductUseCaseTest {
     @DisplayName("Given a product when adding it to the database then the product is inserted correctly")
     void givenAProductWhenInsertItThenOK() {
 
-        ProductDto productDto = new ProductDto("Product01", "Description01", "Category01", "Manufacturer01", 100);
-        FullProductDto fullProductDtoReturned = new FullProductDto(1L, "Product01", "Description01", "Category01", "Manufacturer01", 100);
+        ProductDto productDto = new ProductDto("Product01", "Description01", "Category01", "Manufacturer01");
+        FullProductDto fullProductDtoReturned = new FullProductDto(1L, "Product01", "Description01", "Category01", "Manufacturer01");
 
         when(this.productRepository.save(Mockito.any())).thenReturn(fullProductDtoReturned);
         FullProductDto result = this.productUseCaseImpl.createProduct(productDto);
