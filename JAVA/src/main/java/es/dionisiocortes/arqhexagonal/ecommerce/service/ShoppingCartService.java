@@ -2,7 +2,9 @@ package es.dionisiocortes.arqhexagonal.ecommerce.service;
 
 import es.dionisiocortes.arqhexagonal.ecommerce.controller.shoppingcart.ShoppingCartResponseDto;
 import es.dionisiocortes.arqhexagonal.ecommerce.domain.shoppingcart.FullShoppingCartDto;
+import es.dionisiocortes.arqhexagonal.ecommerce.domain.shoppingcart.ShoppingCartNotFoundException;
 import es.dionisiocortes.arqhexagonal.ecommerce.domain.shoppingcart.ShoppingCartUseCase;
+import es.dionisiocortes.arqhexagonal.ecommerce.domain.shoppingcart.ShoppingCartValidationException;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -35,17 +37,18 @@ public class ShoppingCartService {
         return shoppingCartResponseDto;
     }
 
-    public ShoppingCartResponseDto finishShoppingCart(long id) throws Exception {
+    public ShoppingCartResponseDto finishShoppingCart(long id) throws ShoppingCartValidationExceptionService, ShoppingCartNotFoundExceptionService {
         try {
             FullShoppingCartDto fullShoppingCartDto = this.shoppingCartUseCase.finishShoppingCart(id);
-            ShoppingCartResponseDto shoppingCartResponseDto = ShoppingCartResponseDto.fromFullShoppingCartDto(fullShoppingCartDto);
-            return shoppingCartResponseDto;
-        } catch (Exception e) {
-            throw new Exception();
+            return ShoppingCartResponseDto.fromFullShoppingCartDto(fullShoppingCartDto);
+        } catch (ShoppingCartValidationException e) {
+            throw new ShoppingCartValidationExceptionService();
+        } catch (ShoppingCartNotFoundException e1) {
+            throw new ShoppingCartNotFoundExceptionService();
         }
     }
 
-    public void deleteProduct(Long id, long productId ) {
+    public void deleteProduct(Long id, long productId) {
         shoppingCartUseCase.deleteProduct(id, productId);
     }
 

@@ -30,15 +30,14 @@ public class ShoppingCartUseCaseImpl implements ShoppingCartUseCase {
     }
 
     @Override
-    public FullShoppingCartDto finishShoppingCart(long id) throws Exception {
-        FullShoppingCartDto fullShoppingCartDto = this.findShoppingCartById(id).orElseThrow(Exception::new);
+    public FullShoppingCartDto finishShoppingCart(long id) throws ShoppingCartValidationException, ShoppingCartNotFoundException {
+        FullShoppingCartDto fullShoppingCartDto = this.findShoppingCartById(id).orElseThrow(ShoppingCartNotFoundException::new);
         boolean isValid = shoppingCartValidationService.validate(fullShoppingCartDto);
-
         if (isValid) {
             fullShoppingCartDto.setFinished(true);
             shoppingCartRepository.finishShoppingCartById(id);
         } else {
-            throw new Exception();
+            throw new ShoppingCartValidationException();
         }
 
         return fullShoppingCartDto;

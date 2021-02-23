@@ -10,7 +10,7 @@ public interface ShoppingCartUseCase {
 
     public void deleteById(long id);
 
-    public FullShoppingCartDto finishShoppingCart(long id) throws Exception;
+    public FullShoppingCartDto finishShoppingCart(long id) throws ShoppingCartValidationException, ShoppingCartNotFoundException;
 
     public FullShoppingCartDto addProduct(long id, long productId, int prodQuantity);
 

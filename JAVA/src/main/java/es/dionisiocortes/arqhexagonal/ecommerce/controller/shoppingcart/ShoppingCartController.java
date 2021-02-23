@@ -1,8 +1,12 @@
 package es.dionisiocortes.arqhexagonal.ecommerce.controller.shoppingcart;
 
 import es.dionisiocortes.arqhexagonal.ecommerce.service.ProductService;
+import es.dionisiocortes.arqhexagonal.ecommerce.service.ShoppingCartNotFoundExceptionService;
 import es.dionisiocortes.arqhexagonal.ecommerce.service.ShoppingCartService;
+import es.dionisiocortes.arqhexagonal.ecommerce.service.ShoppingCartValidationExceptionService;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 @RequestMapping("/api")
 @RestController
@@ -26,8 +30,10 @@ public class ShoppingCartController {
     public ShoppingCartResponseDto updateShoppingCart(@PathVariable long id) {
         try {
             return this.shoppingCartService.finishShoppingCart(id);
-        } catch (Exception e) {
-            return null;
+        } catch (ShoppingCartNotFoundExceptionService e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Cart not found", e);
+        } catch (ShoppingCartValidationExceptionService e1) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Cart not validated", e1);
         }
     }
 
