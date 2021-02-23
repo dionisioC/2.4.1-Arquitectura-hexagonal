@@ -48,8 +48,8 @@ public class ShoppingCartService {
         }
     }
 
-    public void deleteProduct(Long id, long productId) {
-        shoppingCartUseCase.deleteProduct(id, productId);
+    public Optional<FullShoppingCartDto> deleteProduct(Long id, long productId) {
+        return shoppingCartUseCase.deleteProduct(id, productId);
     }
 
 }

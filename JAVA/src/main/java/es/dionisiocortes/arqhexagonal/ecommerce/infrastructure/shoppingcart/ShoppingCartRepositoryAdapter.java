@@ -77,8 +77,9 @@ public class ShoppingCartRepositoryAdapter implements ShoppingCartRepository {
     public Optional<FullShoppingCartDto> deleteProduct(long id, long productId) {
         ShoppingCartEntity shoppingCart = shoppingCartJpaRepositoryRepository.findById(id).orElseThrow();
         ProductEntity productEntity = productJpaRepository.findById(productId).orElseThrow();
-        cartItemJpaRepository.findByShoppingCartEntityAndProductEntity(shoppingCart, productEntity).orElseThrow();
+        CartItemEntity cartEntity = cartItemJpaRepository.findByShoppingCartEntityAndProductEntity(shoppingCart, productEntity).orElseThrow();
         shoppingCart.getItems().removeIf(item -> productId == item.getProductEntity().getId());
+        cartItemJpaRepository.delete(cartEntity);
 
         return Optional.of(ShoppingCartEntity.toFullShoppingCartDto(shoppingCart));
 

@@ -11,7 +11,7 @@ public class CartItemEntity {
 
     int productNumber;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @ManyToOne
     private ShoppingCartEntity shoppingCartEntity;

@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 public class ShoppingCartEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long Id;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "shoppingCartEntity", cascade = CascadeType.ALL)

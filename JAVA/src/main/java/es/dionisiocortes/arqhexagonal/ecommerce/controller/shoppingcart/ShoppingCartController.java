@@ -1,5 +1,6 @@
 package es.dionisiocortes.arqhexagonal.ecommerce.controller.shoppingcart;
 
+import es.dionisiocortes.arqhexagonal.ecommerce.domain.shoppingcart.FullShoppingCartDto;
 import es.dionisiocortes.arqhexagonal.ecommerce.service.ProductService;
 import es.dionisiocortes.arqhexagonal.ecommerce.service.ShoppingCartNotFoundExceptionService;
 import es.dionisiocortes.arqhexagonal.ecommerce.service.ShoppingCartService;
@@ -59,15 +60,19 @@ public class ShoppingCartController {
         }
     }
 
-
     @PostMapping("/shoppingcarts/{id}/product/{prodId}/quantity/{prodQuantity}")
     public ShoppingCartResponseDto addProductToShoppingCart(@PathVariable long id, @PathVariable long prodId, @PathVariable int prodQuantity) {
         return this.shoppingCartService.addProduct(id, prodId, prodQuantity);
     }
 
-    @DeleteMapping("/shoppingcarts/{id}/product/{prodId}/")
-    public void deleteProductFromShoppingCart(@PathVariable long id, @PathVariable long prodId) {
-        this.shoppingCartService.deleteProduct(id, prodId);
+    @DeleteMapping("/shoppingcarts/{id}/product/{prodId}")
+    public FullShoppingCartDto deleteProductFromShoppingCart(@PathVariable long id, @PathVariable long prodId) {
+        Optional<FullShoppingCartDto> maybeACart = this.shoppingCartService.deleteProduct(id, prodId);
+        if (maybeACart.isPresent()) {
+            return maybeACart.get();
+        } else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Cart not found");
+        }
     }
 
 }

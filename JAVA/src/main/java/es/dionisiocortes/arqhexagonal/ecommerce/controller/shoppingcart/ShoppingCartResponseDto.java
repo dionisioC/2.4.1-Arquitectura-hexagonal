@@ -42,4 +42,15 @@ public class ShoppingCartResponseDto {
         return items;
     }
 
+    public void setItems(List<CartItemResponseDto> items) {
+        this.items = items;
+    }
+
+    public boolean isFinished() {
+        return finished;
+    }
+
+    public void setFinished(boolean finished) {
+        this.finished = finished;
+    }
 }
