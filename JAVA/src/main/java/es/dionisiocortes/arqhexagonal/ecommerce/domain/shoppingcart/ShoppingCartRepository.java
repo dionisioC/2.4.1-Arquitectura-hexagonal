@@ -8,12 +8,14 @@ public interface ShoppingCartRepository {
 
     Optional<FullShoppingCartDto> findById(long id);
 
-    void deleteById(long id);
+    void deleteById(long id) throws ShoppingCartNotFoundException;
 
     FullShoppingCartDto addProduct(long id, long productId, int prodQuantity);
 
     Optional<FullShoppingCartDto> deleteProduct(long id, long productId);
 
     void finishShoppingCartById(long id);
+
+    boolean existShoppingCartById(long id);
 
 }

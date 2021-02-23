@@ -89,4 +89,9 @@ public class ShoppingCartRepositoryAdapter implements ShoppingCartRepository {
         this.shoppingCartJpaRepositoryRepository.updateShoppingCartFinishedbyId(id);
     }
 
+    @Override
+    public boolean existShoppingCartById(long id) {
+        return this.shoppingCartJpaRepositoryRepository.existsById(id);
+    }
+
 }

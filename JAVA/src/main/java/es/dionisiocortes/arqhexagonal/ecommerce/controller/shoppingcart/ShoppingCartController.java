@@ -5,8 +5,11 @@ import es.dionisiocortes.arqhexagonal.ecommerce.service.ShoppingCartNotFoundExce
 import es.dionisiocortes.arqhexagonal.ecommerce.service.ShoppingCartService;
 import es.dionisiocortes.arqhexagonal.ecommerce.service.ShoppingCartValidationExceptionService;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+
+import java.util.Optional;
 
 @RequestMapping("/api")
 @RestController
@@ -39,12 +42,21 @@ public class ShoppingCartController {
 
     @GetMapping("/shoppingcarts/{id}")
     public ShoppingCartResponseDto getShoppingCart(@PathVariable long id) {
-        return this.shoppingCartService.findById(id).orElseThrow();
+        Optional<ShoppingCartResponseDto> maybeACart = this.shoppingCartService.findById(id);
+        if (maybeACart.isPresent()){
+            return maybeACart.get();
+        } else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Cart not found");
+        }
     }
 
     @DeleteMapping("/shoppingcarts/{id}")
-    public void deleteShoppingCart(@PathVariable long id) {
-        this.shoppingCartService.deleteById(id);
+    public ResponseEntity deleteShoppingCart(@PathVariable long id) {
+        if (this.shoppingCartService.deleteById(id)){
+            return new ResponseEntity(HttpStatus.OK);
+        } else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Cart not found");
+        }
     }
 
 

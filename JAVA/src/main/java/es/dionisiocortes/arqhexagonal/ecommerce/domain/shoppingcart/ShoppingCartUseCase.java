@@ -8,7 +8,7 @@ public interface ShoppingCartUseCase {
 
     public Optional<FullShoppingCartDto> findShoppingCartById(long id);
 
-    public void deleteById(long id);
+    public boolean deleteById(long id);
 
     public FullShoppingCartDto finishShoppingCart(long id) throws ShoppingCartValidationException, ShoppingCartNotFoundException;
 

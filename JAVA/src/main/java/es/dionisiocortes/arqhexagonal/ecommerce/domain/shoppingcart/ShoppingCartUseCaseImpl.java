@@ -25,8 +25,12 @@ public class ShoppingCartUseCaseImpl implements ShoppingCartUseCase {
     }
 
     @Override
-    public void deleteById(long id) {
-        shoppingCartRepository.deleteById(id);
+    public boolean deleteById(long id) {
+        boolean exist = shoppingCartRepository.existShoppingCartById(id);
+        if (exist) {
+            shoppingCartRepository.deleteById(id);
+        }
+        return exist;
     }
 
     @Override

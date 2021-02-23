@@ -27,8 +27,8 @@ public class ShoppingCartService {
         return shoppingCartResponseDto;
     }
 
-    public void deleteById(Long id) {
-        shoppingCartUseCase.deleteById(id);
+    public boolean deleteById(Long id) {
+        return shoppingCartUseCase.deleteById(id);
     }
 
     public ShoppingCartResponseDto addProduct(long id, long productId, int prodQuantity) {
